@@ -1,19 +1,18 @@
 version: "3"
 
 tasks:
-  release:*:*:
-    desc: Final release process eg task release:v0.1.0:"initial release"
-    vars:
-      TAG: "{{index .MATCH 0}}"
-      BUILD: "{{index .MATCH 1}}"
+  release:
+    desc: 'Release process eg task release VERSION=v0.1.0 COMMENT="initial release"'
+    requires:
+      vars: [VERSION, COMMENT]
     cmds:
       - task: clean
       - task: build
       - task: check
       - git add .
-      - git commit -am "{{.BUILD}}"
-      - git tag "{{.TAG}}"
-      - git push origin "{{.TAG}}"
+      - git commit -am "{{.COMMENT}}"
+      - git tag "{{.VERSION}}"
+      - git push origin "{{.VERSION}}"
       - git push
 
   build:
