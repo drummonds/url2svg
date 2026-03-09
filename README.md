@@ -106,3 +106,12 @@ url2svg -url https://example.com -timeout 60
 ## License
 
 MIT
+
+## Links
+
+| | |
+|---|---|
+| Documentation | https://h3-url2svg.statichost.page/ |
+| Source (Codeberg) | https://codeberg.org/hum3/url2svg |
+| Mirror (GitHub) | https://github.com/drummonds/url2svg |
+| Docs repo | https://codeberg.org/hum3/url2svg-docs |
