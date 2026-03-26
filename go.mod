@@ -1,4 +1,4 @@
-module github.com/hum3/url2svg
+module codeberg.org/hum3/url2svg
 
 go 1.25.3
 

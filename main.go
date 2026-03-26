@@ -7,10 +7,10 @@ import (
 	"os"
 	"time"
 
-	"github.com/hum3/url2svg/internal/capture"
-	"github.com/hum3/url2svg/internal/model"
-	"github.com/hum3/url2svg/internal/process"
-	"github.com/hum3/url2svg/internal/svg"
+	"codeberg.org/hum3/url2svg/internal/capture"
+	"codeberg.org/hum3/url2svg/internal/model"
+	"codeberg.org/hum3/url2svg/internal/process"
+	"codeberg.org/hum3/url2svg/internal/svg"
 )
 
 func main() {

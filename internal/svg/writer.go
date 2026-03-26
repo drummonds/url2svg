@@ -6,7 +6,7 @@ import (
 	"math"
 	"strings"
 
-	"github.com/hum3/url2svg/internal/model"
+	"codeberg.org/hum3/url2svg/internal/model"
 )
 
 // Writer provides low-level SVG element writing with float64 precision.

@@ -9,7 +9,7 @@ import (
 	"github.com/go-rod/rod"
 	"github.com/go-rod/rod/lib/launcher"
 	"github.com/go-rod/rod/lib/proto"
-	"github.com/hum3/url2svg/internal/model"
+	"codeberg.org/hum3/url2svg/internal/model"
 )
 
 //go:embed extract.js

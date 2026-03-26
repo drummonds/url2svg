@@ -29,13 +29,13 @@ url2svg -url https://www.bbc.co.uk/news -o bbc-news.svg
 Requires Go 1.21+ and Chrome/Chromium installed on the system.
 
 ```bash
-go install github.com/hum3/url2svg@latest
+go install codeberg.org/hum3/url2svg@latest
 ```
 
 Or build from source:
 
 ```bash
-git clone https://github.com/hum3/url2svg.git
+git clone https://codeberg.org/hum3/url2svg.git
 cd url2svg
 go build -o url2svg .
 ```
@@ -114,4 +114,3 @@ MIT
 | Documentation | https://h3-url2svg.statichost.page/ |
 | Source (Codeberg) | https://codeberg.org/hum3/url2svg |
 | Mirror (GitHub) | https://github.com/drummonds/url2svg |
-| Docs repo | https://codeberg.org/hum3/url2svg-docs |
