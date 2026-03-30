@@ -24,7 +24,7 @@ See the [documentation](https://h3-url2svg.statichost.page/) for a live demo cap
 
 ## Installation
 
-Requires Go 1.21+ and Chrome/Chromium installed on the system.
+Requires Go 1.25+ and Chrome/Chromium installed on the system.
 
 ```bash
 go install codeberg.org/hum3/url2svg/cmd/url2svg@latest
@@ -98,7 +98,7 @@ url2svg -url https://example.com -timeout 60
 
 ## Requirements
 
-- Go 1.21+
+- Go 1.25+
 - Chrome or Chromium (detected automatically via `$PATH`)
 
 ## License
