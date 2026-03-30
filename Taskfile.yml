@@ -1,30 +1,17 @@
 version: "3"
 
 tasks:
-  release:
-    desc: 'Release process eg task release VERSION=v0.1.0 COMMENT="initial release"'
-    requires:
-      vars: [VERSION, COMMENT]
-    cmds:
-      - task: clean
-      - task: build
-      - task: check
-      - git add .
-      - git commit -am "{{.COMMENT}}"
-      - git tag "{{.VERSION}}"
-      - git push origin "{{.VERSION}}"
-      - git push
-
   build:
     desc: Build the binary
     cmds:
-      - go build -o url2svg .
+      - go build -o url2svg ./cmd/url2svg
 
   check:
-    desc: Run fmt, vet, and tests
+    desc: Run fmt, vet, lint, and tests
     cmds:
       - task: fmt
       - task: vet
+      - task: lint
       - task: test
 
   fmt:
@@ -37,10 +24,35 @@ tasks:
     cmds:
       - go vet ./...
 
+  lint:
+    desc: Run golangci-lint
+    cmds:
+      - golangci-lint run ./...
+
   test:
     desc: Run tests
     cmds:
       - go test ./...
+
+  demo:serve:
+    desc: Run the demo showcase server
+    cmds:
+      - go run ./cmd/demo
+
+  demo:capture:
+    desc: Capture the demo page as SVG
+    cmds:
+      - go build -o url2svg ./cmd/url2svg
+      - go run ./cmd/demo &
+      - sleep 2
+      - ./url2svg -url http://localhost:8082 -o docs/demo.svg
+      - kill %1 || true
+
+  docs:build:
+    desc: Build documentation
+    cmds:
+      - task: demo:capture
+      - task-plus md2html --file index.md --dst docs
 
   clean:
     desc: Remove build artifacts

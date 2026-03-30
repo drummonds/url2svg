@@ -6,13 +6,11 @@ url2svg renders a URL in a real browser, extracts the full visual tree (elements
 
 ## Example
 
-Capturing the BBC News front page:
-
 ```bash
-url2svg -url https://www.bbc.co.uk/news -o bbc-news.svg
+url2svg -url https://example.com -o page.svg
 ```
 
-<img src="bbc-news.svg" width="600" alt="BBC News front page captured as SVG" />
+See the [documentation](https://h3-url2svg.statichost.page/) for a live demo capture.
 
 ## Features
 
@@ -29,7 +27,7 @@ url2svg -url https://www.bbc.co.uk/news -o bbc-news.svg
 Requires Go 1.21+ and Chrome/Chromium installed on the system.
 
 ```bash
-go install codeberg.org/hum3/url2svg@latest
+go install codeberg.org/hum3/url2svg/cmd/url2svg@latest
 ```
 
 Or build from source:
@@ -37,7 +35,7 @@ Or build from source:
 ```bash
 git clone https://codeberg.org/hum3/url2svg.git
 cd url2svg
-go build -o url2svg .
+go build -o url2svg ./cmd/url2svg
 ```
 
 ## Usage

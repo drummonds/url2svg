@@ -100,10 +100,7 @@ func isEmptyLeaf(el *model.VisualElement) bool {
 			return false
 		}
 	}
-	if len(el.BoxShadows) > 0 {
-		return false
-	}
-	return true
+	return len(el.BoxShadows) == 0
 }
 
 func clampAlpha(c *model.Color) {

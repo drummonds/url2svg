@@ -82,6 +82,9 @@ func Render(root *model.VisualElement, viewportWidth, viewportHeight float64, mo
 
 	renderElement(w, dc, root)
 
+	// Adaptive border — drawn last so it's on top of all content
+	w.Rect(0, 0, docWidth, docHeight, fmt.Sprintf(`fill="none" stroke="%s" stroke-width="1"`, borderColor(root.BackgroundColor)))
+
 	w.CloseSVG()
 	return buf.Bytes(), nil
 }
@@ -229,10 +232,11 @@ func renderBackground(w *Writer, el *model.VisualElement) {
 			if border.Color.A < 1 {
 				attrParts = append(attrParts, fmt.Sprintf(`stroke-opacity="%s"`, opacity))
 			}
-			if border.Style == "dashed" {
+			switch border.Style {
+			case "dashed":
 				attrParts = append(attrParts, fmt.Sprintf(`stroke-dasharray="%s %s"`,
 					w.fmtFloat(border.Width*3), w.fmtFloat(border.Width*3)))
-			} else if border.Style == "dotted" {
+			case "dotted":
 				attrParts = append(attrParts, fmt.Sprintf(`stroke-dasharray="%s %s"`,
 					w.fmtFloat(border.Width), w.fmtFloat(border.Width)))
 			}
@@ -282,10 +286,11 @@ func renderNonUniformBorders(w *Writer, el *model.VisualElement) {
 		if s.border.Color.A < 1 {
 			attrParts = append(attrParts, fmt.Sprintf(`stroke-opacity="%s"`, opacity))
 		}
-		if s.border.Style == "dashed" {
+		switch s.border.Style {
+		case "dashed":
 			attrParts = append(attrParts, fmt.Sprintf(`stroke-dasharray="%s %s"`,
 				w.fmtFloat(s.border.Width*3), w.fmtFloat(s.border.Width*3)))
-		} else if s.border.Style == "dotted" {
+		case "dotted":
 			attrParts = append(attrParts, fmt.Sprintf(`stroke-dasharray="%s %s"`,
 				w.fmtFloat(s.border.Width), w.fmtFloat(s.border.Width)))
 		}
@@ -331,4 +336,21 @@ func renderTextRuns(w *Writer, el *model.VisualElement) {
 
 		w.Text(run.Bounds.X, baselineY, run.Text, strings.Join(attrParts, " "))
 	}
+}
+
+// borderColor returns a border color that contrasts with the effective background.
+// It alpha-blends bg over white, then checks luminance.
+func borderColor(bg model.Color) string {
+	// Alpha-blend over white
+	r := float64(bg.R)*bg.A + 255*(1-bg.A)
+	g := float64(bg.G)*bg.A + 255*(1-bg.A)
+	b := float64(bg.B)*bg.A + 255*(1-bg.A)
+
+	// Relative luminance (ITU-R BT.709)
+	luminance := (0.2126*r + 0.7152*g + 0.0722*b) / 255
+
+	if luminance > 0.5 {
+		return "#ccc"
+	}
+	return "#555"
 }

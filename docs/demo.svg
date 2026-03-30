@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1024" height="768" viewBox="0 0 1024 768">
+  <defs>
+    <filter id="shadow1" x="-0.6" y="-0.6" width="2.2" height="2.2">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="6"/>
+      <feOffset dx="0" dy="4" result="offsetblur"/>
+      <feFlood flood-color="rgb(0,0,0)" flood-opacity="0.1"/>
+      <feComposite in2="offsetblur" operator="in"/>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="shadow2" x="-0.6" y="-0.6" width="2.2" height="2.2">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="6"/>
+      <feOffset dx="0" dy="4" result="offsetblur"/>
+      <feFlood flood-color="rgb(0,0,0)" flood-opacity="0.1"/>
+      <feComposite in2="offsetblur" operator="in"/>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  <rect x="0" y="0" width="1024" height="768" fill="white"/>
+  <rect x="0" y="0" width="1024" height="421" fill="rgb(245,245,245)"/>
+  <text x="32" y="56.8" fill="rgb(51,51,51)" font-family="-apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, sans-serif" font-size="28" font-weight="700">url2svg Demo Page</text>
+  <text x="32" y="85.6" fill="rgb(102,102,102)" font-family="-apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, sans-serif" font-size="16">A showcase of elements captured as SVG</text>
+  <rect x="32" y="114" width="442" height="111" rx="8" fill="rgb(0,0,0)" filter="url(#shadow1)"/>
+  <rect x="32" y="114" width="442" height="111" rx="8" fill="rgb(255,255,255)" stroke="rgb(224,224,224)" stroke-width="1"/>
+  <text x="53" y="148.6" fill="rgb(34,34,34)" font-family="-apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, sans-serif" font-size="16" font-weight="700">Text &amp; Typography</text>
+  <text x="53" y="175.8" fill="rgb(85,85,85)" font-family="-apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, sans-serif" font-size="14">Regular text,</text>
+  <text x="194.6" y="175.8" fill="rgb(85,85,85)" font-family="-apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, sans-serif" font-size="14">,</text>
+  <text x="256.9" y="175.8" fill="rgb(85,85,85)" font-family="-apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, sans-serif" font-size="14">, and</text>
+  <text x="324.6" y="175.8" fill="rgb(85,85,85)" font-family="-apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, sans-serif" font-size="14">.</text>
+  <text x="136.3" y="175.8" fill="rgb(85,85,85)" font-family="-apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, sans-serif" font-size="14" font-weight="700">bold text</text>
+  <text x="202.4" y="175.8" fill="rgb(85,85,85)" font-family="-apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, sans-serif" font-size="14" font-style="italic">italic text</text>
+  <a xlink:href="https://codeberg.org/hum3/url2svg">
+    <text x="291.9" y="175.8" fill="rgb(21,101,192)" font-family="-apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, sans-serif" font-size="14" text-decoration="underline">a link</text>
+  </a>
+  <rect x="490" y="114" width="442" height="111" rx="8" fill="rgb(227,242,253)" stroke="rgb(144,202,249)" stroke-width="1"/>
+  <text x="511" y="148.6" fill="rgb(34,34,34)" font-family="-apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, sans-serif" font-size="16" font-weight="700">Coloured Background</text>
+  <rect x="511" y="161" width="41.3" height="22" rx="12" fill="rgb(25,118,210)"/>
+  <text x="519" y="176.2" fill="rgb(255,255,255)" font-family="-apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, sans-serif" font-size="12">SVG</text>
+  <rect x="558.3" y="161" width="50" height="22" rx="12" fill="rgb(56,142,60)"/>
+  <text x="566.3" y="176.2" fill="rgb(255,255,255)" font-family="-apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, sans-serif" font-size="12">Vector</text>
+  <text x="511" y="197.8" fill="rgb(85,85,85)" font-family="-apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, sans-serif" font-size="14">Backgrounds, borders, and inline badges with rounded corners.</text>
+  <rect x="32" y="241" width="442" height="110" rx="8" fill="rgb(232,245,233)" stroke="rgb(165,214,167)" stroke-width="1"/>
+  <text x="53" y="275.6" fill="rgb(34,34,34)" font-family="-apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, sans-serif" font-size="16" font-weight="700">Border Radius</text>
+  <text x="53" y="302.8" fill="rgb(85,85,85)" font-family="-apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, sans-serif" font-size="14">Cards with rounded corners and coloured borders demonstrate</text>
+  <text x="53" y="323.8" fill="rgb(85,85,85)" font-family="-apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, sans-serif" font-size="14">border rendering fidelity.</text>
+  <rect x="490" y="241" width="442" height="110" rx="8" fill="rgb(0,0,0)" filter="url(#shadow2)"/>
+  <rect x="490" y="241" width="442" height="110" rx="8" fill="rgb(255,255,255)" stroke="rgb(224,224,224)" stroke-width="1"/>
+  <text x="511" y="275.6" fill="rgb(34,34,34)" font-family="-apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, sans-serif" font-size="16" font-weight="700">Box Shadows</text>
+  <text x="511" y="302.8" fill="rgb(85,85,85)" font-family="-apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, sans-serif" font-size="14">This card has a box shadow rendered via SVG filter primitives.</text>
+  <text x="32" y="386.2" fill="rgb(153,153,153)" font-family="-apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, sans-serif" font-size="12">Captured by url2svg —</text>
+  <a xlink:href="https://codeberg.org/hum3/url2svg">
+    <text x="158.1" y="386.2" fill="rgb(21,101,192)" font-family="-apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, sans-serif" font-size="12" text-decoration="underline">codeberg.org/hum3/url2svg</text>
+  </a>
+  <rect x="0" y="0" width="1024" height="768" fill="none" stroke="#ccc" stroke-width="1"/>
+</svg>

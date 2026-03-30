@@ -43,7 +43,7 @@ func (w *Writer) fmtColor(c model.Color) (string, string) {
 
 func (w *Writer) writeIndent() {
 	for i := 0; i < w.indent; i++ {
-		fmt.Fprint(w.w, "  ")
+		_, _ = fmt.Fprint(w.w, "  ")
 	}
 }
 
@@ -59,14 +59,14 @@ func (w *Writer) Dedent() {
 
 // Raw writes a raw string.
 func (w *Writer) Raw(s string) {
-	fmt.Fprint(w.w, s)
+	_, _ = fmt.Fprint(w.w, s)
 }
 
 // Linef writes an indented formatted line.
 func (w *Writer) Linef(format string, args ...any) {
 	w.writeIndent()
-	fmt.Fprintf(w.w, format, args...)
-	fmt.Fprint(w.w, "\n")
+	_, _ = fmt.Fprintf(w.w, format, args...)
+	_, _ = fmt.Fprint(w.w, "\n")
 }
 
 // OpenSVG writes the opening <svg> tag with the given dimensions.
