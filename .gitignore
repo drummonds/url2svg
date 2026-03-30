@@ -2,3 +2,7 @@
 .task
 output.svg
 docs/*.html
+
+.vscode
+.claude
+
