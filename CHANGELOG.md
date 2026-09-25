@@ -2,6 +2,10 @@
 
 ## [Unreleased]
 
+## [0.1.7] - 2026-09-25
+
+ - Version flag, self update, sanitised links and inline SVG, docs favicon
+
 ### Added
 - `-version` flag and `url2svg self update`, which reinstalls the latest release from the Go module proxy.
 - Docs favicon, captured by url2svg itself from a badge page served by the demo server.
