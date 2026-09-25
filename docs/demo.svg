@@ -35,7 +35,7 @@
   <text x="324.6" y="175.8" fill="rgb(85,85,85)" font-family="-apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, sans-serif" font-size="14">.</text>
   <text x="136.3" y="175.8" fill="rgb(85,85,85)" font-family="-apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, sans-serif" font-size="14" font-weight="700">bold text</text>
   <text x="202.4" y="175.8" fill="rgb(85,85,85)" font-family="-apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, sans-serif" font-size="14" font-style="italic">italic text</text>
-  <a xlink:href="https://codeberg.org/hum3/url2svg">
+  <a xlink:href="https://git.bytestone.uk/hum3/url2svg">
     <text x="291.9" y="175.8" fill="rgb(21,101,192)" font-family="-apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, sans-serif" font-size="14" text-decoration="underline">a link</text>
   </a>
   <rect x="490" y="114" width="442" height="111" rx="8" fill="rgb(227,242,253)" stroke="rgb(144,202,249)" stroke-width="1"/>
@@ -54,8 +54,8 @@
   <text x="511" y="275.6" fill="rgb(34,34,34)" font-family="-apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, sans-serif" font-size="16" font-weight="700">Box Shadows</text>
   <text x="511" y="302.8" fill="rgb(85,85,85)" font-family="-apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, sans-serif" font-size="14">This card has a box shadow rendered via SVG filter primitives.</text>
   <text x="32" y="386.2" fill="rgb(153,153,153)" font-family="-apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, sans-serif" font-size="12">Captured by url2svg —</text>
-  <a xlink:href="https://codeberg.org/hum3/url2svg">
-    <text x="158.1" y="386.2" fill="rgb(21,101,192)" font-family="-apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, sans-serif" font-size="12" text-decoration="underline">codeberg.org/hum3/url2svg</text>
+  <a xlink:href="https://git.bytestone.uk/hum3/url2svg">
+    <text x="158.1" y="386.2" fill="rgb(21,101,192)" font-family="-apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, sans-serif" font-size="12" text-decoration="underline">git.bytestone.uk/hum3/url2svg</text>
   </a>
   <rect x="0" y="0" width="1024" height="768" fill="none" stroke="#ccc" stroke-width="1"/>
 </svg>
