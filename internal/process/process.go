@@ -3,6 +3,7 @@ package process
 import (
 	"encoding/json"
 	"fmt"
+	"strings"
 
 	"git.bytestone.uk/hum3/url2svg/internal/model"
 )
@@ -45,6 +46,8 @@ func Parse(jsonStr string, mode model.Mode) (*Result, error) {
 
 // normalize walks the tree and fixes up any values that need post-processing.
 func normalize(el *model.VisualElement) {
+	el.Href = safeHref(el.Href)
+
 	// Clamp opacity to [0, 1]
 	if el.Opacity < 0 {
 		el.Opacity = 0
@@ -66,6 +69,19 @@ func normalize(el *model.VisualElement) {
 	for _, child := range el.Children {
 		normalize(child)
 	}
+}
+
+// safeHref keeps only links that merely navigate. Any other scheme
+// (javascript:, data:, vbscript:, ...) could run code when the SVG is
+// opened as a document and the link clicked, so it is dropped.
+func safeHref(href string) string {
+	h := strings.ToLower(strings.TrimSpace(href))
+	for _, scheme := range []string{"http://", "https://", "mailto:"} {
+		if strings.HasPrefix(h, scheme) {
+			return strings.TrimSpace(href)
+		}
+	}
+	return ""
 }
 
 // pruneEmpty recursively removes leaf elements that have no visual content.

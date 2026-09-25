@@ -18,7 +18,8 @@ See the [documentation](https://url2svg.docs.bytestone.uk/) for a live demo capt
 - Text runs with correct font family, size, weight, style, and decoration
 - Images embedded as inline data URLs (no external dependencies)
 - Box shadows
-- Clickable links preserved via `<a>` elements
+- Clickable links preserved via `<a>` elements (http, https and mailto only)
+- No JavaScript in the output: scripts, event handlers and `javascript:` links are stripped
 - Full-page scroll capture for below-the-fold content
 - Compact mode for smaller file sizes
 
@@ -104,6 +105,19 @@ Compares the installed version with the latest release on the Go module proxy an
 2. **Process** — Parses the JSON visual tree into a Go intermediate representation (`VisualElement` tree), applying mode-specific optimisations.
 
 3. **Render** — Walks the element tree and emits SVG markup: rectangles for boxes, `<text>` for text runs, `<image>` for embedded images, `<clipPath>` for overflow clipping, and `<filter>` for box shadows.
+
+## No JavaScript in the output
+
+A capture is a picture of the page, never a copy of its behaviour. The SVG contains only shapes, text, embedded images and plain links, so it is safe to open directly in a browser or embed in another page:
+
+| Source | What happens |
+|--------|--------------|
+| `<script>` blocks and `on*` handlers on HTML elements | Never captured; only geometry and computed style are read |
+| `<a href="javascript:...">`, `data:`, `vbscript:` or other non-navigation links | Link dropped; the text and styling remain |
+| Inline `<svg>` elements (serialised whole into an `<image>`) | `<script>` elements, `on*` attributes and non-navigation `href`s are removed before serialising |
+| Embedded raster images | Re-encoded through a canvas, so no metadata or payload survives |
+
+Links keep only `http`, `https` and `mailto` schemes, plus `#fragment` references inside inline SVG so `<use>` and gradients still resolve.
 
 ## Requirements
 

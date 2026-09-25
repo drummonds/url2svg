@@ -33,6 +33,10 @@ re-rendering. The demo above at decreasing widths, down to icon size:
 2. **Process** — the JSON tree is parsed into a Go intermediate representation
 3. **Render** — the element tree is walked to emit SVG markup
 
+## No JavaScript
+
+The SVG is a picture, not a copy of the page's behaviour. Scripts and event handlers are never captured, `javascript:` and other non-navigation links are dropped, and inline `<svg>` elements are scrubbed of script before they are embedded. See the README for the full table.
+
 ## Links
 
 | | |

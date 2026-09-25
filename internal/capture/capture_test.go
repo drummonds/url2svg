@@ -2,6 +2,7 @@ package capture
 
 import (
 	"context"
+	"encoding/base64"
 	"encoding/json"
 	"net/http"
 	"net/http/httptest"
@@ -84,5 +85,74 @@ func TestCapture_InlineSVGIsASingleImage(t *testing.T) {
 	}
 	if svg.Bounds.Width < 390 || svg.Bounds.Width > 410 {
 		t.Errorf("svg should be laid out at its rendered width (~400), got %v", svg.Bounds.Width)
+	}
+}
+
+// A serialised inline <svg> must carry no executable content: no <script>,
+// no on* event handlers, and no javascript: links.
+func TestCapture_InlineSVGIsScrubbedOfScript(t *testing.T) {
+	if _, found := launcher.LookPath(); !found {
+		t.Skip("Chrome/Chromium not found")
+	}
+
+	const page = `<!DOCTYPE html><html><body>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="40" height="40" onload="console.log(1)">
+  <script>console.log(2)</script>
+  <a xlink:href="javascript:console.log(3)"><rect width="40" height="40" fill="red" onclick="console.log(4)"/></a>
+  <text x="5" y="20">keep me</text>
+</svg>
+</body></html>`
+	srv := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		w.Header().Set("Content-Type", "text/html")
+		_, _ = w.Write([]byte(page))
+	}))
+	defer srv.Close()
+
+	raw, err := Capture(context.Background(), Options{
+		URL: srv.URL, Width: 1024, Height: 768, Timeout: 30 * time.Second, Mode: model.ModeFull,
+	})
+	if err != nil {
+		t.Fatal(err)
+	}
+	var doc struct {
+		Root *model.VisualElement `json:"root"`
+	}
+	if err := json.Unmarshal([]byte(raw), &doc); err != nil {
+		t.Fatal(err)
+	}
+
+	var svg *model.VisualElement
+	var walk func(el *model.VisualElement)
+	walk = func(el *model.VisualElement) {
+		if el.Tag == "svg" {
+			svg = el
+		}
+		for _, c := range el.Children {
+			walk(c)
+		}
+	}
+	walk(doc.Root)
+	if svg == nil {
+		t.Fatal("no svg node captured")
+	}
+
+	const prefix = "data:image/svg+xml;base64,"
+	if !strings.HasPrefix(svg.ImageDataURL, prefix) {
+		t.Fatalf("unexpected image data URL %q", svg.ImageDataURL[:min(40, len(svg.ImageDataURL))])
+	}
+	decoded, err := base64.StdEncoding.DecodeString(strings.TrimPrefix(svg.ImageDataURL, prefix))
+	if err != nil {
+		t.Fatal(err)
+	}
+	got := string(decoded)
+	for _, forbidden := range []string{"<script", "onload", "onclick", "javascript:"} {
+		if strings.Contains(strings.ToLower(got), forbidden) {
+			t.Errorf("serialised svg still contains %q:\n%s", forbidden, got)
+		}
+	}
+	for _, kept := range []string{"<rect", "keep me", `fill="red"`} {
+		if !strings.Contains(got, kept) {
+			t.Errorf("scrubbing removed harmless content %q:\n%s", kept, got)
+		}
 	}
 }

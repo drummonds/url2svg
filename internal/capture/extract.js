@@ -89,11 +89,35 @@
     return false;
   }
 
+  // scrubScript returns a copy of an inline SVG with everything executable
+  // removed: <script> elements, on* event handler attributes, and links
+  // whose scheme is not a plain navigation (http, https, mailto).
+  function scrubScript(el) {
+    const copy = el.cloneNode(true);
+    for (const script of copy.querySelectorAll('script')) script.remove();
+    const all = [copy, ...copy.querySelectorAll('*')];
+    for (const node of all) {
+      for (const attr of Array.from(node.attributes)) {
+        const name = attr.name.toLowerCase();
+        const isHref = name === 'href' || name === 'xlink:href';
+        if (name.startsWith('on') || (isHref && !isSafeHref(attr.value))) {
+          node.removeAttribute(attr.name);
+        }
+      }
+    }
+    return copy;
+  }
+
+  function isSafeHref(value) {
+    const v = value.trim().toLowerCase();
+    return v.startsWith('http://') || v.startsWith('https://') || v.startsWith('mailto:') || v.startsWith('#');
+  }
+
   function captureImage(el) {
     try {
       if (el.tagName === 'SVG' || el instanceof SVGElement) {
         const serializer = new XMLSerializer();
-        const svgStr = serializer.serializeToString(el);
+        const svgStr = serializer.serializeToString(scrubScript(el));
         return 'data:image/svg+xml;base64,' + btoa(unescape(encodeURIComponent(svgStr)));
       }
       if (el.tagName === 'IMG' && el.naturalWidth > 0) {
