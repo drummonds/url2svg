@@ -61,6 +61,9 @@ func TestOutdated(t *testing.T) {
 	}{
 		{"v0.1.6", "v0.1.6", false},
 		{"v0.1.6", "v0.1.7", true},
+		{"v0.1.7", "v0.1.6", false}, // proxy lags a fresh tag: never downgrade
+		{"v0.1.9", "v0.1.10", true},
+		{"v0.1.7+dirty", "v0.1.7", false},
 		{"dev", "v0.1.7", true},
 	}
 	for _, c := range cases {

@@ -2,6 +2,9 @@
 
 ## [Unreleased]
 
+### Fixed
+- `self update` never downgrades: it compares versions semantically, so a module proxy that has not yet seen a fresh tag leaves the newer installed binary alone.
+
 ## [0.1.7] - 2026-09-25
 
  - Version flag, self update, sanitised links and inline SVG, docs favicon

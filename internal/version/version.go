@@ -12,6 +12,8 @@ import (
 	"os/exec"
 	"runtime/debug"
 	"time"
+
+	"golang.org/x/mod/semver"
 )
 
 // Module is the Go module path url2svg is installed from.
@@ -70,10 +72,12 @@ func Latest(ctx context.Context, proxy string) (string, error) {
 	return latest.Version, nil
 }
 
-// Outdated reports whether current should be replaced by latest. A "dev"
-// build is always considered outdated so `self update` installs a release.
+// Outdated reports whether latest is a newer release than current. A "dev"
+// build is always outdated so `self update` installs a release. A current
+// version newer than latest is not outdated: the module proxy can lag a
+// fresh tag, and that must never cause a downgrade.
 func Outdated(current, latest string) bool {
-	return current != latest
+	return semver.Compare(latest, current) > 0
 }
 
 // Update installs the latest release over the running binary, reporting
