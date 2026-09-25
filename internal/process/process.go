@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 
-	"codeberg.org/hum3/url2svg/internal/model"
+	"git.bytestone.uk/hum3/url2svg/internal/model"
 )
 
 // extractionResult wraps the JS output which includes viewport dimensions and the tree.

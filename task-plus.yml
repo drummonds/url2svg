@@ -1,7 +1,11 @@
+type: library
 install: true
 remotes:
-  - origin
-  - github
+  - name: origin
+    forge: forgejo
+    token_env: BYTESTONE_FORGEJO_TOKEN
+  - name: github
+    forge: github
 pages_build:
   - task docs:build
 pages_deploy:

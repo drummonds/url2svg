@@ -37,5 +37,5 @@ re-rendering. The demo above at decreasing widths, down to icon size:
 
 | | |
 |---|---|
-| Source (Codeberg) | https://codeberg.org/hum3/url2svg |
+| Source (Forgejo) | https://git.bytestone.uk/hum3/url2svg |
 | Mirror (GitHub) | https://github.com/drummonds/url2svg |

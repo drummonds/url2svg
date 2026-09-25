@@ -9,7 +9,7 @@ import (
 	"testing"
 	"time"
 
-	"codeberg.org/hum3/url2svg/internal/model"
+	"git.bytestone.uk/hum3/url2svg/internal/model"
 	"github.com/go-rod/rod/lib/launcher"
 )
 
@@ -33,7 +33,7 @@ func TestCapture_InlineSVGIsASingleImage(t *testing.T) {
 </body></html>`
 	srv := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		w.Header().Set("Content-Type", "text/html")
-		w.Write([]byte(page))
+		_, _ = w.Write([]byte(page))
 	}))
 	defer srv.Close()
 

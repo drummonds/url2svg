@@ -37,7 +37,7 @@ const page = `<!DOCTYPE html>
   <div class="grid">
     <div class="card card-shadow">
       <h2>Text &amp; Typography</h2>
-      <p>Regular text, <strong>bold text</strong>, <em>italic text</em>, and <a href="https://codeberg.org/hum3/url2svg">a link</a>.</p>
+      <p>Regular text, <strong>bold text</strong>, <em>italic text</em>, and <a href="https://git.bytestone.uk/hum3/url2svg">a link</a>.</p>
     </div>
     <div class="card card-blue">
       <h2>Coloured Background</h2>
@@ -53,7 +53,7 @@ const page = `<!DOCTYPE html>
       <p>This card has a box shadow rendered via SVG filter primitives.</p>
     </div>
   </div>
-  <p class="footer">Captured by url2svg &mdash; <a href="https://codeberg.org/hum3/url2svg">codeberg.org/hum3/url2svg</a></p>
+  <p class="footer">Captured by url2svg &mdash; <a href="https://git.bytestone.uk/hum3/url2svg">git.bytestone.uk/hum3/url2svg</a></p>
 </body>
 </html>`
 

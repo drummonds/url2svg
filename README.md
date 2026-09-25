@@ -27,13 +27,13 @@ See the [documentation](https://url2svg.docs.bytestone.uk/) for a live demo capt
 Requires Go 1.25+ and Chrome/Chromium installed on the system.
 
 ```bash
-go install codeberg.org/hum3/url2svg/cmd/url2svg@latest
+go install git.bytestone.uk/hum3/url2svg/cmd/url2svg@latest
 ```
 
 Or build from source:
 
 ```bash
-git clone https://codeberg.org/hum3/url2svg.git
+git clone https://git.bytestone.uk/hum3/url2svg.git
 cd url2svg
 go build -o url2svg ./cmd/url2svg
 ```
@@ -110,5 +110,5 @@ MIT
 | | |
 |---|---|
 | Documentation | https://url2svg.docs.bytestone.uk/ |
-| Source (Codeberg) | https://codeberg.org/hum3/url2svg |
+| Source (Codeberg) | https://git.bytestone.uk/hum3/url2svg |
 | Mirror (GitHub) | https://github.com/drummonds/url2svg |

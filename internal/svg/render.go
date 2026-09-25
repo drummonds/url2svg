@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"strings"
 
-	"codeberg.org/hum3/url2svg/internal/model"
+	"git.bytestone.uk/hum3/url2svg/internal/model"
 )
 
 // defsCollector walks the tree and collects <clipPath> and <filter> definitions.
