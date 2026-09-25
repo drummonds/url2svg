@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="64" height="64" viewBox="0 0 64 64">
+  <defs>
+    <clipPath id="clip1">
+      <rect x="0" y="0" width="64" height="64" />
+    </clipPath>
+  </defs>
+  <rect x="0" y="0" width="64" height="64" fill="white"/>
+  <g clip-path="url(#clip1)">
+    <rect x="0" y="0" width="64" height="64" rx="12" fill="rgb(25,118,210)"/>
+    <text x="9.6" y="41" fill="rgb(255,255,255)" font-family="-apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, sans-serif" font-size="26" font-weight="700">u2s</text>
+  </g>
+  <rect x="0" y="0" width="64" height="64" fill="none" stroke="#ccc" stroke-width="1"/>
+</svg>

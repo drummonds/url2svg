@@ -55,6 +55,7 @@ url2svg -url <URL> [options]
 | `-height` | 4:3 ratio of width | Viewport height in pixels |
 | `-full-page` | `false` | Capture the full scroll height, not just the viewport |
 | `-timeout` | `30` | Page load timeout in seconds |
+| `-version` | | Print the version and exit |
 
 ### Output modes
 
@@ -88,6 +89,14 @@ Set a longer timeout for slow-loading pages:
 url2svg -url https://example.com -timeout 60
 ```
 
+### Updating
+
+```bash
+url2svg self update
+```
+
+Compares the installed version with the latest release on the Go module proxy and reinstalls if newer.
+
 ## How it works
 
 1. **Capture** — Launches headless Chrome via [go-rod](https://github.com/nicedoc/go-rod), navigates to the URL, waits for the page to load, then runs a JavaScript extraction script that walks the DOM and collects every visible element's geometry, styles, text content, and embedded images.
@@ -110,5 +119,5 @@ MIT
 | | |
 |---|---|
 | Documentation | https://url2svg.docs.bytestone.uk/ |
-| Source (Codeberg) | https://git.bytestone.uk/hum3/url2svg |
+| Source (Forgejo) | https://git.bytestone.uk/hum3/url2svg |
 | Mirror (GitHub) | https://github.com/drummonds/url2svg |

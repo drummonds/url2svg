@@ -11,9 +11,18 @@ import (
 	"git.bytestone.uk/hum3/url2svg/internal/model"
 	"git.bytestone.uk/hum3/url2svg/internal/process"
 	"git.bytestone.uk/hum3/url2svg/internal/svg"
+	"git.bytestone.uk/hum3/url2svg/internal/version"
 )
 
 func main() {
+	if len(os.Args) > 1 && os.Args[1] == "self" {
+		if err := runSelf(os.Args[2:]); err != nil {
+			fmt.Fprintf(os.Stderr, "error: %v\n", err)
+			os.Exit(1)
+		}
+		return
+	}
+
 	url := flag.String("url", "", "URL to capture (required)")
 	output := flag.String("o", "output.svg", "Output file path")
 	width := flag.Int("width", 0, "Viewport width (default: 1024 compact, 1280 full)")
@@ -21,7 +30,13 @@ func main() {
 	timeout := flag.Int("timeout", 30, "Page load timeout in seconds")
 	fullPage := flag.Bool("full-page", false, "Capture full scroll height")
 	modeFlag := flag.String("mode", "compact", "Output mode: compact or full")
+	showVersion := flag.Bool("version", false, "Print the version and exit")
 	flag.Parse()
+
+	if *showVersion {
+		fmt.Println("url2svg", version.Current())
+		return
+	}
 
 	if *url == "" {
 		fmt.Fprintln(os.Stderr, "error: -url is required")
@@ -91,4 +106,12 @@ func main() {
 	}
 
 	fmt.Fprintf(os.Stderr, "Done! Written to %s (%d bytes)\n", *output, len(svgData))
+}
+
+// runSelf handles `url2svg self update`.
+func runSelf(args []string) error {
+	if len(args) != 1 || args[0] != "update" {
+		return fmt.Errorf("usage: url2svg self update")
+	}
+	return version.Update(context.Background(), os.Stdout)
 }

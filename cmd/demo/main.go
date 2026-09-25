@@ -57,10 +57,31 @@ const page = `<!DOCTYPE html>
 </body>
 </html>`
 
+// favicon is a 64x64 badge; url2svg captures it to make the docs favicon.
+const favicon = `<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>url2svg favicon</title>
+<style>
+  * { margin: 0; padding: 0; }
+  body { width: 64px; height: 64px; overflow: hidden; }
+  .badge { width: 64px; height: 64px; border-radius: 12px; background: #1976d2; color: #fff;
+           font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+           font-size: 26px; font-weight: bold; line-height: 64px; text-align: center; }
+</style>
+</head>
+<body><div class="badge">u2s</div></body>
+</html>`
+
 func main() {
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		w.Header().Set("Content-Type", "text/html; charset=utf-8")
 		_, _ = fmt.Fprint(w, page)
+	})
+	http.HandleFunc("/favicon", func(w http.ResponseWriter, r *http.Request) {
+		w.Header().Set("Content-Type", "text/html; charset=utf-8")
+		_, _ = fmt.Fprint(w, favicon)
 	})
 	log.Println("demo server listening on :8082")
 	log.Fatal(http.ListenAndServe(":8082", nil))

@@ -40,12 +40,12 @@ tasks:
       - go run ./cmd/demo
 
   demo:capture:
-    desc: Capture the demo page as SVG
+    desc: Capture the demo page and favicon as SVG
     cmds:
       - go build -o url2svg ./cmd/url2svg
       - go build -o url2svg-demo ./cmd/demo
       # Real bash: Task's built-in shell cannot kill its own background jobs.
-      - bash -c './url2svg-demo & DEMO=$!; sleep 2; ./url2svg -url http://localhost:8082 -o docs/demo.svg; STATUS=$?; kill $DEMO; exit $STATUS'
+      - bash -c './url2svg-demo & DEMO=$!; sleep 2; ./url2svg -url http://localhost:8082 -o docs/demo.svg && ./url2svg -url http://localhost:8082/favicon -width 64 -height 64 -o docs/favicon.svg; STATUS=$?; kill $DEMO; exit $STATUS'
 
   docs:build:
     desc: Build documentation

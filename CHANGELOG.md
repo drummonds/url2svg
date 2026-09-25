@@ -2,6 +2,10 @@
 
 ## [Unreleased]
 
+### Added
+- `-version` flag and `url2svg self update`, which reinstalls the latest release from the Go module proxy.
+- Docs favicon, captured by url2svg itself from a badge page served by the demo server.
+
 ## [0.1.6] - 2026-09-25
 
  - Docs on docs.bytestone.uk, module moved to git.bytestone.uk
