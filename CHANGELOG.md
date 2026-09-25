@@ -2,6 +2,9 @@
 
 ## [Unreleased]
 
+### Fixed
+- Inline `<svg>` elements are captured as a single image at their rendered size. Previously every shape became its own `<image>` and each `<text>` was duplicated as an HTML text run at the unscaled CSS font size, so chart labels rendered oversized.
+
 ## [0.1.5] - 2026-04-01
 
  - Enable install verification on tp release

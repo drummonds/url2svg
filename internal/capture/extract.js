@@ -220,6 +220,11 @@
 
     if (bounds.width === 0 && bounds.height === 0 && el !== document.body) return null;
 
+    // An inline <svg> is one picture: serialise it whole at its rendered size.
+    // Walking into it would emit every shape as its own image and duplicate
+    // each <text> as an HTML run at the CSS font size, ignoring the viewBox.
+    const isInlineSVGRoot = el instanceof SVGSVGElement;
+
     const node = {
       bounds,
       backgroundColor: parseColor(style.backgroundColor),
@@ -248,9 +253,11 @@
       ariaLabel: el.getAttribute('aria-label') || '',
       href: el.tagName === 'A' ? (el.href || '') : '',
       imageDataURL: captureImage(el),
-      textRuns: extractTextRuns(el),
+      textRuns: isInlineSVGRoot ? [] : extractTextRuns(el),
       children: [],
     };
+
+    if (isInlineSVGRoot) return node;
 
     for (const child of el.children) {
       const childNode = walkElement(child);
