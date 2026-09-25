@@ -2,6 +2,10 @@
 
 ## [Unreleased]
 
+## [0.1.8] - 2026-09-25
+
+ - Fix self update downgrading when the proxy lags
+
 ### Fixed
 - `self update` never downgrades: it compares versions semantically, so a module proxy that has not yet seen a fresh tag leaves the newer installed binary alone.
 
