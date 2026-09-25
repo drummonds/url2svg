@@ -2,6 +2,10 @@
 
 ## [Unreleased]
 
+## [0.1.6] - 2026-09-25
+
+ - Docs on docs.bytestone.uk, module moved to git.bytestone.uk
+
 ### Changed
 - Module path is now `git.bytestone.uk/hum3/url2svg`; the Codeberg repo is retired and GitHub is a mirror.
 - Documentation moved to https://url2svg.docs.bytestone.uk/ and shows the demo capture scaled down to icon size.
