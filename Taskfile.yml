@@ -43,10 +43,9 @@ tasks:
     desc: Capture the demo page as SVG
     cmds:
       - go build -o url2svg ./cmd/url2svg
-      - go run ./cmd/demo &
-      - sleep 2
-      - ./url2svg -url http://localhost:8082 -o docs/demo.svg
-      - kill %1 || true
+      - go build -o url2svg-demo ./cmd/demo
+      # Real bash: Task's built-in shell cannot kill its own background jobs.
+      - bash -c './url2svg-demo & DEMO=$!; sleep 2; ./url2svg -url http://localhost:8082 -o docs/demo.svg; STATUS=$?; kill $DEMO; exit $STATUS'
 
   docs:build:
     desc: Build documentation
@@ -57,4 +56,4 @@ tasks:
   clean:
     desc: Remove build artifacts
     cmds:
-      - rm -f url2svg
+      - rm -f url2svg url2svg-demo

@@ -5,5 +5,5 @@ remotes:
 pages_build:
   - task docs:build
 pages_deploy:
-  - type: statichost
-    site: h3-url2svg
+  - type: rsync
+    site: url2svg

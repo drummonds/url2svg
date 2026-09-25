@@ -10,7 +10,7 @@ url2svg renders a URL in a real browser, extracts the full visual tree (elements
 url2svg -url https://example.com -o page.svg
 ```
 
-See the [documentation](https://h3-url2svg.statichost.page/) for a live demo capture.
+See the [documentation](https://url2svg.docs.bytestone.uk/) for a live demo capture.
 
 ## Features
 
@@ -109,6 +109,6 @@ MIT
 
 | | |
 |---|---|
-| Documentation | https://h3-url2svg.statichost.page/ |
+| Documentation | https://url2svg.docs.bytestone.uk/ |
 | Source (Codeberg) | https://codeberg.org/hum3/url2svg |
 | Mirror (GitHub) | https://github.com/drummonds/url2svg |

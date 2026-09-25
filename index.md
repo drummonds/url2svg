@@ -8,6 +8,25 @@ A simple showcase page captured as SVG — text, backgrounds, borders, shadows, 
 
 <img src="demo.svg" width="600" alt="url2svg demo capture" />
 
+## Scaling down
+
+Because the output is vector, the same capture can be shown at any size without
+re-rendering. The demo above at decreasing widths, down to icon size:
+
+<table>
+<tr>
+<th>400</th><th>200</th><th>100</th><th>64</th><th>32</th><th>16</th>
+</tr>
+<tr style="vertical-align: top">
+<td><img src="demo.svg" width="400" alt="demo at 400px" /></td>
+<td><img src="demo.svg" width="200" alt="demo at 200px" /></td>
+<td><img src="demo.svg" width="100" alt="demo at 100px" /></td>
+<td><img src="demo.svg" width="64" alt="demo at 64px" /></td>
+<td><img src="demo.svg" width="32" alt="demo at 32px" /></td>
+<td><img src="demo.svg" width="16" alt="demo at 16px" /></td>
+</tr>
+</table>
+
 ## How it works
 
 1. **Capture** — headless Chrome renders the page; JavaScript extracts the full visual tree
